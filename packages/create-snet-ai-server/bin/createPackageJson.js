@@ -1,7 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 const os = require("os");
-const { default: npmrcTemplate } = require("./template/npmrcTemplate");
 
 const packageJson = {
   version: "0.1.0",
@@ -14,7 +13,7 @@ const packageJson = {
   },
   dependencies: {
     dotenv: "^8.2.0",
-    "@vivek205/node-sdk-dev": "^1.0.0",
+    "snet-sdk": "^1.0.0-beta.7",
   },
   devDependencies: {
     "@babel/cli": "^7.13.10",
@@ -34,7 +33,6 @@ const createPackageJson = () => {
   const appName = path.basename(root);
   packageJson.name = appName;
   fs.writeFileSync(path.join(root, "package.json"), JSON.stringify(packageJson, null, 2) + os.EOL);
-  fs.writeFileSync(path.join(root, ".npmrc"), npmrcTemplate);
 };
 
 exports.default = createPackageJson;
